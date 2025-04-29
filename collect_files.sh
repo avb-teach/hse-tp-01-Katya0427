@@ -2,5 +2,7 @@
 
 input_dir=$1
 output_dir=$2
-max_depth=$3
-find $input_dir -maxdepth $max_depth -type f -exec cp {} $output_dir \;
+if  [[ "$#" -eq 4 ]] && [[ "$3" == "--max_depth" ]]
+then max_depth=$4
+else max_depth=""
+fi
