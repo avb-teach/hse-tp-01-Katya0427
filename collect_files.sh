@@ -2,8 +2,8 @@
 
 input_dir=$1
 output_dir=$2
-if  [[ "$#" -eq 4 ]] && [[ "$3" == "--max_depth" ]]
-then max_depth=$4
+if  [[ "$#" -eq 3 ]]
+then max_depth=$3
 else max_depth=""
 fi
 
