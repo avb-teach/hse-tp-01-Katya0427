@@ -1,2 +1,2 @@
-input_dir=&1
-output_dir=&2
+input_dir=$1
+output_dir=$2
