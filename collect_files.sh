@@ -34,4 +34,5 @@ copy(){
 if [[ -z "$max_depth" ]]
 then find "$input_dir" -type f -exec cp {} "$output_dir" \;
 else copy $input_dir 0
+fi
     
