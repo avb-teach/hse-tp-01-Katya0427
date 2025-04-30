@@ -19,20 +19,13 @@ copy(){
           if [[ -d "$item" ]]
           then copy "$item" $((current_depth + 1))
           elif [[ -f "$item" ]]
-          then first_part=$(basename "$item")
-               name="$first_part"
-               count=1
-               while [[ -e "$output_dir/$name" ]]; do
-                    name="{first_part%.*}-$count.${name##*.}"
-                    count=$((count + 1))
-               done
-               cp "$item" "$output_dir/$name"
+          then cp "$item" "$output_dir/$name"
           fi
      done
 }                
      
 if [[ -z "$max_depth" ]]
 then find "$input_dir" -type f -exec cp {} "$output_dir" \;
-else copy $input_dir 0
+else copy $input_dir 1
 fi
     
