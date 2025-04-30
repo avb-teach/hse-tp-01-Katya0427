@@ -3,8 +3,8 @@
 input_dir=$1
 output_dir=$2
 
-if  [[ "$#" -eq 3 ]]; then
-     max_depth=$3
+if  [[ "$#" -eq 3 ]]
+then max_depth=$3
 else max_depth=""
 fi
 
@@ -16,10 +16,10 @@ copy(){
      fi
      
      for item in "$current_dir"/*; do
-          if [[ -d "$item" ]]; then
-               copy "$item" $((current_depth + 1))
-          elif [[ -f "$item" ]]; then
-               first_part=$(basename "$item")
+          if [[ -d "$item" ]]
+          then copy "$item" $((current_depth + 1))
+          elif [[ -f "$item" ]]
+          then first_part=$(basename "$item")
                name="$first_part"
                count=1
                while [[ -e "$output_dir/$name" ]]; do
@@ -33,6 +33,5 @@ copy(){
      
 if [[ -z "$max_depth" ]]
 then find "$input_dir" -type f -exec cp {} "$output_dir" \;
-else 
-     copy $input_dir 0
+else copy $input_dir 0
     
