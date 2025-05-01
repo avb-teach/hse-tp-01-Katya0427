@@ -17,7 +17,12 @@ then find "$input_dir" -type f -exec cp {} "$output_dir" \;
 else
   find "$input_dir" -type f | while read -r file; do
     rel_path=${file#$input_dir/}
-    dir_depth=$(echo "$rel_path" | tr -cd '/' | wc -c)
+    dir_depth=0
+    for (( i=0; i<${#rel_path}; i++ )); do
+      if [[ "${rel_path:$i:1}" == "/" ]]; then
+        ((dir_depth++))
+      fi
+    done
     
     if [ $dir_depth -lt $max_depth ]; then
       target_dir="$output_dir/$(dirname "$rel_path")"
