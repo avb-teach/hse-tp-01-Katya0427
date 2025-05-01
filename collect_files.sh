@@ -5,7 +5,7 @@ output_dir=$2
 
 if  [[ "$#" -eq 3 ]]
 then max_depth=$3
-else max_depth=1000
+else max_depth=""
 fi
 
 copy(){
@@ -33,5 +33,5 @@ copy(){
 
 if [[ -z "$max_depth" ]]
 then find "$input_dir" -type f -exec cp {} "$output_dir" \;
-else copy $input_dir 0
+else copy $input_dir 1
 fi
